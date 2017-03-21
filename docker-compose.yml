@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  django:
+    image: ivellios/django_hello:latest
+    environment:
+      - DJANGO_SETTINGS_MODULE=hello.local_settings
+    volumes:
+      - "./local_settings.py:/srv/hello_django/hello/local_settings.py"
+      - "./logs:/srv/logs"
+    ports:
+      - "8001:8000"
+    restart: always
+    command: "--workers 5"
